@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: orders
+    columns:
+      - name: user_id
+        tests:
+          - relationships:
+              to: source('Snowflake', 'USERS')
+              field: id
+
+  - name: order_items
+    columns:
+      - name: product_id
+        tests:
+          - relationships:
+              to: source('Snowflake', 'PRODUCTS')
+              field: id
+
+  - name: int_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+
+  - name: cleaned_order_items
+    columns:
+      - name: order_id
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id

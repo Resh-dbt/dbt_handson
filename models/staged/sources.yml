@@ -1,0 +1,25 @@
+sources:
+  - name: Snowflake
+    database: ELOOK_COMMERCE
+    schema: RAW
+    tables:
+      - name: USERS
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+      - name: PRODUCTS
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+      - name: ORDERS
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+      - name: ORDER_ITEMS
+          
